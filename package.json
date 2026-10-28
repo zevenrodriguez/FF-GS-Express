@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/zevenrodriguez/FF-GS-Express#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "express": "^5.3.0",
     "hbs": "^4.4.0"
   }
