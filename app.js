@@ -83,6 +83,27 @@ app.delete("/clear", (req, res) => {
   res.send("Votes cleared" + "<a href='/form'>Back to form</a>");
 });
 
+// Chart.js example: draw a bar chart from the votes cookie
+app.get("/chart", (req, res) => {
+  // 1. Start every animal at 0 votes
+  let votes = {
+    narwhal: 0,
+    penguin: 0,
+    seal: 0
+  };
+
+  // 2. If the browser already has a votes cookie, use those counts instead
+  if (req.cookies.votes !== undefined) {
+    votes = req.cookies.votes;
+  }
+
+  // 3. Send the whole votes object as JSON text so the template can drop it into <script>
+  res.render("chart", {
+    title: "Vote Chart",
+    votes: JSON.stringify(votes)
+  });
+});
+
 app.get("/:name", (req, res)=>{
     res.send("My name is: " + req.params.name);
 });
